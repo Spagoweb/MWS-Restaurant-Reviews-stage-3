@@ -1,0 +1,183 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,td,th,p {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color: #333;
+	line-height: 1.5;
+}
+body {
+	background-color: #fdfdfd;
+	margin: 0;
+	position:relative;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+ul, li {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #333;
+}
+a {
+	color: orange;
+	text-decoration: none;
+}
+a:hover, a:focus {
+	color: #3397db;
+	text-decoration: none;
+}
+a img {
+	border: none 0px #fff;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0 0 20px;
+}
+article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+#maincontent {
+  background-color: #f3f3f3;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#maincontent .favorite-icon button {
+  top: 20px;
+}
+#footer {
+  background-color: #444;
+  color: #aaa;
+  font-size: 8pt;
+  letter-spacing: 1px;
+  padding: 25px;
+  text-align: center;
+  text-transform: uppercase;
+}
+#restaurants-list li .favorite-icon button, #maincontent .favorite-icon button {
+  max-width: 25px;
+  max-height: 25px;
+  position: absolute;
+  top: 4px;
+  right: 20px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  background-color: inherit;
+  border: none;
+  margin: 0;
+  padding: 0;
+  color: transparent;
+  font-size: 2px;
+}
+
+/* ====================== Map ====================== */
+#map {
+  width: 100%;
+  height: 400px;
+  background-color: #ccc;
+}
+#mapImg {
+  cursor: pointer;
+}
+.map-aria-description {
+  display: none;
+}
+.inside #map-container {
+  background: blue none repeat scroll 0 0;
+  height: 200px;
+  /*position: fixed;
+  right: 0;
+  top: 80px;
+  width: 50%;*/
+}
+.inside #map {
+  background-color: #ccc;
+  height: 100%;
+  width: 100%;
+}
+
+/* ====================== Navigation ====================== */
+nav {
+  width: 100%;
+  background-color: #252831;
+}
+nav h1 {
+  margin: auto;
+  padding: 25px 20px;
+  text-align: center;
+}
+nav h1 a {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 200;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+}
+nav {
+  text-align: left;
+}
+
+/* ====================== Review ====================== */
+#review-entry {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  max-width: 800px;
+  width: 100%;
+  padding-bottom: 65px;
+}
+
+#review-entry label span {
+  display: block;
+  font-size: 14px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#review-entry label input {
+  width: calc(100% - 20px);
+  box-sizing: border-box;
+  font-size: 18px;
+  padding: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#review-entry label select {
+  font-size: 18px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#review-entry label textarea {
+  width: calc(100% - 20px);
+  box-sizing: border-box;
+  font-size: 18px;
+  padding: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#review-entry div {
+  margin-bottom: 15px;
+}
+
+#review-entry button {
+  background-color: #a85900;
+  border-bottom: 3px solid #eee;
+  color: #f0f0f0;
+  display: inline-block;
+  font-size: 14px;
+  margin: 15px 0 0;
+  padding: 8px 30px 10px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
