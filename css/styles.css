@@ -45,7 +45,21 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   flex-direction: column;
 }
 #maincontent .favorite-icon button {
-  top: 20px;
+  top: 160px;
+}
+#restaurants-list li .favorite-icon button, #maincontent .favorite-icon button {
+  max-width: 25px;
+  max-height: 25px;
+  width: 25px;
+  height: 25px;
+  right: 10px;
+  cursor: pointer;
+  background-color: inherit;
+  border: none;
+  margin: 0;
+  padding: 0;
+  color: transparent;
+  font-size: 2px;
 }
 #footer {
   background-color: #444;
@@ -55,22 +69,6 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   padding: 25px;
   text-align: center;
   text-transform: uppercase;
-}
-#restaurants-list li .favorite-icon button, #maincontent .favorite-icon button {
-  max-width: 25px;
-  max-height: 25px;
-  position: absolute;
-  top: 4px;
-  right: 20px;
-  width: 25px;
-  height: 25px;
-  cursor: pointer;
-  background-color: inherit;
-  border: none;
-  margin: 0;
-  padding: 0;
-  color: transparent;
-  font-size: 2px;
 }
 
 /* ====================== Map ====================== */

@@ -34,11 +34,11 @@ self.addEventListener("install", event => {
           "/js/main.js",
           "/js/restaurant_info.js",
           "/js/reviews.js",
-          "/img/picture-not-available.webp",
           "/js/register.js",
-          "/sw.js",
           "/lib/idb.js",
-          "/js/lazyload.min.js"
+          "/sw.js",
+          "/js/lazyload.min.js",
+          "/img/picture-not-available.webp"
         ])
         .catch(error => {
           console.log("Caches open failed: " + error);
@@ -122,9 +122,7 @@ const handleAJAXEvent = (event, id) => {
 const handleAJAXEvent = (event, id) => {
   // Only use caching for GET events
   if (event.request.method !== "GET") {
-    return fetch(event.request)
-      .then(fetchResponse => fetchResponse.json())
-      .then(json => {
+    return fetch(event.request).then(fetchResponse => fetchResponse.json()).then(json => {
         return json
       });
   }
@@ -139,11 +137,7 @@ const handleAJAXEvent = (event, id) => {
 
 const handleReviewsEvent = (event, id) => {
   event.respondWith(dbPromise.then(db => {
-    return db
-      .transaction("reviews")
-      .objectStore("reviews")
-      .index("restaurant_id")
-      .getAll(id);
+    return db.transaction("reviews").objectStore("reviews").index("restaurant_id").getAll(id);
   }).then(data => {
     return (data.length && data) || fetch(event.request)
       .then(fetchResponse => fetchResponse.json())
@@ -174,14 +168,9 @@ const handleRestaurantEvent = (event, id) => {
   // there. If so, return that. If not, request it from the API, store it, and
   // then return it back.
   event.respondWith(dbPromise.then(db => {
-    return db
-      .transaction("restaurants")
-      .objectStore("restaurants")
-      .get(id);
+    return db.transaction("restaurants").objectStore("restaurants").get(id);
   }).then(data => {
-    return (data && data.data) || fetch(event.request)
-      .then(fetchResponse => fetchResponse.json())
-      .then(json => {
+    return (data && data.data) || fetch(event.request).then(fetchResponse => fetchResponse.json()).then(json => {
         return dbPromise.then(db => {
           const tx = db.transaction("restaurants", "readwrite");
           const store = tx.objectStore("restaurants");
@@ -202,9 +191,7 @@ const handleNonAJAXEvent = (event, cacheRequest) => {
   // fetch the request, cache it, and then return it.
   event.respondWith(caches.match(cacheRequest).then(response => {
     return (response || fetch(event.request).then(fetchResponse => {
-      return caches
-        .open(cacheID)
-        .then(cache => {
+      return caches.open(cacheID).then(cache => {
           if (fetchResponse.url.indexOf("browser-sync") === -1) {
             cache.put(event.request, fetchResponse.clone());
           }
