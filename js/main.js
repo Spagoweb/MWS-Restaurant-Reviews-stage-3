@@ -171,7 +171,7 @@ const createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
 
   const image = document.createElement('img');
-  image.className = 'restaurant-img lazy-load';
+  image.className = 'restaurant-img';
   const imgurlbase = DBHelper.imageUrlForRestaurant(restaurant, 'small');
   const imgurl1x = imgurlbase + "_1x.webp";
   const imgurl2x = imgurlbase + "_2x.webp";

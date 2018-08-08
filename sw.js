@@ -189,7 +189,7 @@ const handleNonAJAXEvent = (event, cacheRequest) => {
   // Check if the HTML request has previously been cached.
   // If so, return the response from the cache. If not,
   // fetch the request, cache it, and then return it.
-  event.respondWith(caches.match(cacheRequest).then(response => {
+  event.respondWith(caches.match(cacheRequest, { ignoreSearch: true }).then(response => {
     return (response || fetch(event.request).then(fetchResponse => {
       return caches.open(cacheID).then(cache => {
           if (fetchResponse.url.indexOf("browser-sync") === -1) {
