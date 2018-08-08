@@ -3,7 +3,7 @@ self.importScripts('lib/idb.js');
 var cacheID = "mws-restaruant-stage3";
 let dbReady = false;
 
-const dbPromise = idb.open("mws-restaurant", 1, upgradeDB => {
+const dbPromise = idb.open("mws-restaurant", 3, upgradeDB => {
   switch (upgradeDB.oldVersion) {
     case 0:
       upgradeDB.createObjectStore("restaurants", { keyPath: "id" });
@@ -37,7 +37,46 @@ self.addEventListener("install", event => {
           "/js/register.js",
           "/lib/idb.js",
           "/sw.js",
-          "/js/lazyload.min.js",
+          "/img/small/1_1x.webp",
+          "/img/small/1_2x.webp",
+          "/img/small/2_1x.webp",
+          "/img/small/2_2x.webp",
+          "/img/small/3_1x.webp",
+          "/img/small/3_2x.webp",
+          "/img/small/4_1x.webp",
+          "/img/small/4_2x.webp",
+          "/img/small/5_1x.webp",
+          "/img/small/5_2x.webp",
+          "/img/small/6_1x.webp",
+          "/img/small/6_2x.webp",
+          "/img/small/7_1x.webp",
+          "/img/small/7_2x.webp",
+          "/img/small/8_1x.webp",
+          "/img/small/8_2x.webp",
+          "/img/small/9_1x.webp",
+          "/img/small/9_2x.webp",
+          "/img/small/10_1x.webp",
+          "/img/small/10_2x.webp",
+          "/img/big/1_1x.webp",
+          "/img/big/1_2x.webp",
+          "/img/big/2_1x.webp",
+          "/img/big/2_2x.webp",
+          "/img/big/3_1x.webp",
+          "/img/big/3_2x.webp",
+          "/img/big/4_1x.webp",
+          "/img/big/4_2x.webp",
+          "/img/big/5_1x.webp",
+          "/img/big/5_2x.webp",
+          "/img/big/6_1x.webp",
+          "/img/big/6_2x.webp",
+          "/img/big/7_1x.webp",
+          "/img/big/7_2x.webp",
+          "/img/big/8_1x.webp",
+          "/img/big/8_2x.webp",
+          "/img/big/9_1x.webp",
+          "/img/big/9_2x.webp",
+          "/img/big/10_1x.webp",
+          "/img/big/10_2x.webp",
           "/img/picture-not-available.webp"
         ])
         .catch(error => {

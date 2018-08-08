@@ -156,6 +156,7 @@ const fillRestaurantsHTML = (restaurants = self.restaurants) => {
     mapImg.id = "mapImg";
     mapImg.onclick = e => switchToLiveMap();
     mapImg.src = mapURL;
+    mapImg.alt = "restaurant map image";
     mapDiv.append(mapImg);
     firstLoad = false;
   } else {
@@ -169,7 +170,7 @@ const fillRestaurantsHTML = (restaurants = self.restaurants) => {
  */
 const createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
-
+/*
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   const imgurlbase = DBHelper.imageUrlForRestaurant(restaurant, 'small');
@@ -180,6 +181,47 @@ const createRestaurantHTML = (restaurant) => {
   image.srcset = `${imgurl1x} 300w, ${imgurl2x} 600w`;
   image.alt = restaurant.name + ' restaurant promo';
 
+  li.append(image);
+*/
+
+  const imgurlbase = DBHelper.imageUrlForRestaurant(restaurant, 'small');
+  const imgurl1x = imgurlbase + "_1x.webp";
+  const imgurl2x = imgurlbase + "_2x.webp";
+
+  /* lazy load image: intersection obseserver */
+  const image = document.createElement('img');
+  //image.alt = `image of ${restaurant.name} restaurant`;
+  image.alt = restaurant.name + ' restaurant promo';
+  const config = {
+    threshold: 0.1
+  };
+
+  let observer;
+  if ('IntersectionObserver' in window) {
+    observer = new IntersectionObserver(onChange, config);
+    observer.observe(image);
+  } else {
+    console.log('Intersection Observers not supported', 'color: darkred');
+    loadImage(image);
+  }
+  const loadImage = image => {
+    image.className = 'restaurant-img';
+    //image.src = DBHelper.imageUrlForRestaurant(restaurant);
+    image.dataset.src = imgurl1x;
+    image.srcset = `${imgurl1x} 300w, ${imgurl2x} 600w`;
+  }
+  function onChange(changes, observer) {
+    changes.forEach(change => {
+      if (change.intersectionRatio > 0) {
+        //console.log('image in View');
+        // Stop watching and load the image
+        loadImage(change.target);
+        observer.unobserve(change.target);
+      } else {
+        //console.log('image out View');
+      }
+    });
+  }
   li.append(image);
 
   const div = document.createElement('div');

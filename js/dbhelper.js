@@ -5,7 +5,7 @@
 
 let fetchedCuisines;
 let fetchedNeighborhoods;
-const dbPromise = idb.open("mws-restaurant", 1, upgradeDB => {
+const dbPromise = idb.open("mws-restaurant", 3, upgradeDB => {
   switch (upgradeDB.oldVersion) {
     case 0:
       upgradeDB.createObjectStore("restaurants", {keyPath: "id"});

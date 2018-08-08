@@ -95,7 +95,7 @@
   max-height: 170px;
 }
 #restaurants-list li h2 {
-  color: #f18200;
+  color: #003366;
   font-family: Arial, sans-serif;
   font-size: 14pt;
   font-weight: 200;
@@ -109,7 +109,7 @@
   font-size: 11pt;
 }
 #restaurants-list li button {
-  background-color: orange;
+  background-color: #e69500;
   color: #fff;
   display: inline-block;
   font-size: 10pt;
